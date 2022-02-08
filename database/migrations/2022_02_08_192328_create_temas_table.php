@@ -22,7 +22,7 @@ return new class extends Migration
         Schema::create('temas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->id();
+            $table->addColumn('typeInterval','duracion');
             $table->timestamps();
         });
     }
