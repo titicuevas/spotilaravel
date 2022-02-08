@@ -23,6 +23,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->addColumn('typeInterval','duracion');
+            $table->foreignId('album_id')->constrained('albumes');
             $table->timestamps();
         });
     }
