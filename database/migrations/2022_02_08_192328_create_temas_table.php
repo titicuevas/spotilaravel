@@ -15,14 +15,14 @@ return new class extends Migration
     public function up()
     {
 
-        Grammar::macro('typeInterlval',function(){
+        Grammar::macro('typeInterval',function(){
             return 'interval';
         });
 
         Schema::create('temas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->addColumn('typeInterval','duracion');
+            $table->addColumn('interval','duracion');
             $table->foreignId('album_id')->constrained('albumes');
             $table->timestamps();
         });
