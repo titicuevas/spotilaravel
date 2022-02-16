@@ -15,7 +15,9 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $albumes = Album::all();
+        return view ('albumes.index',
+        ['albumes'=>$albumes,]);
     }
 
     /**
@@ -25,7 +27,9 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        $album = new Album();
+        return view('albumes.create',
+        ['album'=>$album]);
     }
 
     /**
@@ -36,7 +40,16 @@ class AlbumController extends Controller
      */
     public function store(StoreAlbumRequest $request)
     {
-        //
+        $validados = $request->validated();
+        $album = new Album($validados);
+        $album->save();
+        $request->file('portada')->storeAs
+        ('portadas',
+        $album->id . 'jpg',
+        'public',
+
+    );
+    return redirect()->route('albumes.index');
     }
 
     /**
